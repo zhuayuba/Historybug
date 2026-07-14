@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腦洞歷史 · 異常觀測檔案</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="site-header">
+    <div class="logo-line">◈ ANOMALY OBSERVATION DOSSIER</div>
+    <h1>腦洞歷史</h1>
+    <p class="subtitle">當歷史人物可能是<span>穿越者</span>、<span>無限流玩家</span>、<span>覺醒NPC</span>……</p>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-value">16</div><div class="stat-label">已歸檔異常</div></div>
+      <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">時空象限</div></div>
+      <div class="stat-item"><div class="stat-value">前259–1997</div><div class="stat-label">觀測時間跨度</div></div>
+    </div>
+  </header>
+
+  <!-- QUADRANT FILTER -->
+  <div class="quadrant-filter-bar">
+    <button class="quadrant-btn active" data-quadrant="all">◈ 全部象限</button>
+    <button class="quadrant-btn modern" data-quadrant="modern">近現代中國</button>
+    <button class="quadrant-btn ancient" data-quadrant="ancient">古代中國</button>
+    <button class="quadrant-btn world" data-quadrant="world">全球史</button>
+  </div>
+
+  <!-- ANOMALY TYPE FILTER -->
+  <div class="filter-bar">
+    <button class="filter-tag active" data-filter="all">全部類型</button>
+    <button class="filter-tag" data-filter="機械降神">機械降神</button>
+    <button class="filter-tag" data-filter="無限流">無限流玩家</button>
+    <button class="filter-tag" data-filter="平行宇宙">平行宇宙滯留者</button>
+    <button class="filter-tag" data-filter="降維">降維/文化下載</button>
+    <button class="filter-tag" data-filter="NPC">覺醒NPC</button>
+    <button class="filter-tag" data-filter="系統管理員">系統管理員</button>
+    <button class="filter-tag" data-filter="時間線">時間線導航</button>
+    <button class="filter-tag" data-filter="負優化AI">負優化AI</button>
+    <button class="filter-tag" data-filter="診斷協議">診斷協議</button>
+    <button class="filter-tag" data-filter="速通">速通玩家</button>
+    <button class="filter-tag" data-filter="守護進程">守護進程</button>
+    <button class="filter-tag" data-filter="格式化">系統格式化</button>
+    <button class="filter-tag" data-filter="時間旅行">時間旅行者</button>
+    <button class="filter-tag" data-filter="數據溢出">數據溢出</button>
+    <button class="filter-tag" data-filter="權限漏洞">權限漏洞利用</button>
+  </div>
+
+  <main class="card-grid" id="cardGrid">
+
+    <!-- ===== 001: 西安事變 — 機械降神 (M) ===== -->
+    <a href="episodes/001-xian-shi-bian.html" class="episode-card" data-type="機械降神" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-001</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">機械降神</span>
+      </div>
+      <div class="card-body">
+        <h3>西安事變</h3>
+        <p class="card-subject">張學良 · 1936.12.12</p>
+        <p class="card-excerpt">死局劇本中的強行轉折點。一場綁架的每一個環節都違反歷史邏輯——扣押、不殺、反放——像極了高維力量強行插入的劇情補丁。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1936</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 002: 四渡赤水 — 無限流 (M) ===== -->
+    <a href="episodes/002-si-du-chishui.html" class="episode-card" data-type="無限流" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-002</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">無限流玩家</span>
+      </div>
+      <div class="card-body">
+        <h3>四渡赤水</h3>
+        <p class="card-subject">毛澤東 · 1935.1–3</p>
+        <p class="card-excerpt">在赤水河畔反覆穿越敵軍包圍圈，每一次都精準預判國軍動向。像一個死了無數次後終於背熟了所有關卡路線的無限流玩家。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1935</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 003: 秦始皇 — 系統格式化 (A) ===== -->
+    <a href="episodes/003-qin-shi-huang.html" class="episode-card quadrant-ancient" data-type="格式化" data-quadrant="ancient">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-003</span><span class="quadrant-badge ancient">古代</span></div>
+        <span class="card-anomaly-type">系統格式化</span>
+      </div>
+      <div class="card-body">
+        <h3>秦始皇</h3>
+        <p class="card-subject">System Format Admin · 前259–前210</p>
+        <p class="card-excerpt">十一年內消滅六國，統一文字度量衡貨幣——不是征服，是格式化。萬里長城、兵馬俑、焚書坑儒：每一項都像系統初始化指令。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">前259–前210</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 004: 孫中山 — 平行宇宙滯留者 (M) ===== -->
+    <a href="episodes/004-sun-zhongshan.html" class="episode-card" data-type="平行宇宙" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-004</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">平行宇宙滯留者</span>
+      </div>
+      <div class="card-body">
+        <h3>孫中山</h3>
+        <p class="card-subject">二周目迷茫玩家 · 1866–1925</p>
+        <p class="card-excerpt">一生革命失敗次數之多與「國父」尊號之間存在無法解釋的斷層。像從革命成功的平行宇宙穿越而來，卻發現這個宇宙的劇本完全不一樣。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1866–1925</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 005: 洪秀全 — 降維下載失敗 (M) ===== -->
+    <a href="episodes/005-hong-xiuquan.html" class="episode-card" data-type="降維" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-005</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">降維下載失敗</span>
+      </div>
+      <div class="card-body">
+        <h3>洪秀全與太平天國</h3>
+        <p class="card-subject">文化軟體安裝中斷 · 1851–1864</p>
+        <p class="card-excerpt">一本基督教小冊子→四不像的拜上帝會→席捲半個中國。高維文明向19世紀中國傳輸文化作業系統，頻寬不足，下載到一半就損壞了。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1851–1864</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 006: 達文西 — 時間旅行者 (W) ===== -->
+    <a href="episodes/006-da-vinci.html" class="episode-card quadrant-world" data-type="時間旅行" data-quadrant="world">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-006</span><span class="quadrant-badge world">世界</span></div>
+        <span class="card-anomaly-type">時間旅行者</span>
+      </div>
+      <div class="card-body">
+        <h3>達文西</h3>
+        <p class="card-subject">Stranded Futurist · 1452–1519</p>
+        <p class="card-excerpt">直升機、坦克、潛水服——全畫在15世紀的筆記本上。鏡像書寫、解剖圖精確到20世紀才能驗證。他可能不是超前——他是來自未來，但回不去了。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1452–1519</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 007: 馮玉祥 — 覺醒NPC (M) ===== -->
+    <a href="episodes/007-feng-yuxiang.html" class="episode-card" data-type="NPC" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-007</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">覺醒NPC</span>
+      </div>
+      <div class="card-body">
+        <h3>馮玉祥</h3>
+        <p class="card-subject">全圖流倖存者 · 1882–1948</p>
+        <p class="card-excerpt">倒戈將軍，一生陣營轉換無數次，卻總在關鍵時刻跳到正確一方。像一個NPC在意識到身處殘酷策略遊戲後，學會了全圖透視和反覆讀檔。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1882–1948</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 008: 鄧小平 — 系統管理員 (M) ===== -->
+    <a href="episodes/008-deng-xiaoping.html" class="episode-card" data-type="系統管理員" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-008</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">系統管理員</span>
+      </div>
+      <div class="card-body">
+        <h3>鄧小平</h3>
+        <p class="card-subject">Root Access User · 1904–1997</p>
+        <p class="card-excerpt">三起三落，每次被打倒後復出權力都比之前更大。1978年對中國經濟進行熱更新——他不是在改革，他在修復自己參與編寫的系統。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1904–1997</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 009: 諸葛亮 — 時間線計算者 (A) ===== -->
+    <a href="episodes/009-zhu-ge-liang.html" class="episode-card quadrant-ancient" data-type="時間線" data-quadrant="ancient">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-009</span><span class="quadrant-badge ancient">古代</span></div>
+        <span class="card-anomaly-type">時間線計算者</span>
+      </div>
+      <div class="card-body">
+        <h3>諸葛亮</h3>
+        <p class="card-subject">Timeline Calculator · 181–234</p>
+        <p class="card-excerpt">隆中對在207年精確預測了三國格局。借東風、草船借箭、死諸葛走生仲達——他的預判精度像在讀取未來的概率分佈。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">181–234</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 010: 周恩來 — 時間線導航員 (M) ===== -->
+    <a href="episodes/010-zhou-enlai.html" class="episode-card" data-type="時間線" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-010</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">時間線導航員</span>
+      </div>
+      <div class="card-body">
+        <h3>周恩來</h3>
+        <p class="card-subject">Timeline Navigator · 1898–1976</p>
+        <p class="card-excerpt">中共核心層唯一從未被清洗的人。遵義會議主動讓權、文革中保護大量幹部。每一次都站在正確的時間線分支上——失誤率：零。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1898–1976</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 011: 慈禧 — 負優化AI (M) ===== -->
+    <a href="episodes/011-cixi.html" class="episode-card" data-type="負優化AI" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-011</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">負優化AI</span>
+      </div>
+      <div class="card-body">
+        <h3>慈禧太后</h3>
+        <p class="card-subject">Negative Optimization AI · 1835–1908</p>
+        <p class="card-excerpt">執政47年，系統全指標飄紅。海軍經費修園子、向十一國宣戰、光緒死於砒霜。目標函數只有一個——自身權力存續。關機後三年，系統崩潰。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1835–1908</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 012: 拿破崙 — 數據溢出 (W) ===== -->
+    <a href="episodes/012-napoleon.html" class="episode-card quadrant-world" data-type="數據溢出" data-quadrant="world">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-012</span><span class="quadrant-badge world">世界</span></div>
+        <span class="card-anomaly-type">數據溢出</span>
+      </div>
+      <div class="card-body">
+        <h3>拿破崙</h3>
+        <p class="card-subject">Stat Overflow · 1769–1821</p>
+        <p class="card-excerpt">60場戰役贏了52場。莫斯科的冬天、厄爾巴島、滑鐵盧的暴雨——三次系統強制修正，才讓這個屬性值溢出的角色退出遊戲。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1769–1821</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 013: 魯迅 — 診斷協議執行者 (M) ===== -->
+    <a href="episodes/013-lu-xun.html" class="episode-card" data-type="診斷協議" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-013</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">診斷協議執行者</span>
+      </div>
+      <div class="card-body">
+        <h3>魯迅</h3>
+        <p class="card-subject">Diagnostic Protocol Agent · 1881–1936</p>
+        <p class="card-excerpt">棄醫從文，寫下精確到像在照著未來病歷讀的診斷。任務完成，在全面抗戰爆發前一年準時登出。診斷書百年後仍然有效。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1881–1936</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 014: 林彪 — 速通玩家 (M) ===== -->
+    <a href="episodes/014-lin-biao.html" class="episode-card" data-type="速通" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-014</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">速通玩家</span>
+      </div>
+      <div class="card-body">
+        <h3>林彪</h3>
+        <p class="card-subject">Speedrunner · 1907–1971</p>
+        <p class="card-excerpt">最年輕軍長、最年輕元帥、寫入黨章的接班人。最終關卡嘗試跳關操作，直接穿模摔出地圖——溫都爾汗的殘骸散落在世界邊界之外。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1907–1971</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 015: 武則天 — 權限漏洞利用 (A) ===== -->
+    <a href="episodes/015-wu-zetian.html" class="episode-card quadrant-ancient" data-type="權限漏洞" data-quadrant="ancient">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-015</span><span class="quadrant-badge ancient">古代</span></div>
+        <span class="card-anomaly-type">權限漏洞利用</span>
+      </div>
+      <div class="card-body">
+        <h3>武則天</h3>
+        <p class="card-subject">Privilege Escalation · 624–705</p>
+        <p class="card-excerpt">才人→尼姑→皇后→皇帝。她沒有打破系統規則——她找到了一條所有人都以為不存在的權限提升路徑，然後一步一步走到了最高管理員位置。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">624–705</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+    <!-- ===== 016: 李鴻章 — 守護進程 (M) ===== -->
+    <a href="episodes/016-li-hongzhang.html" class="episode-card" data-type="守護進程" data-quadrant="modern">
+      <div class="card-header">
+        <div class="card-header-left"><span class="card-number">ANO-016</span><span class="quadrant-badge modern">近現代</span></div>
+        <span class="card-anomaly-type">守護進程</span>
+      </div>
+      <div class="card-body">
+        <h3>李鴻章</h3>
+        <p class="card-subject">System Guardian Daemon · 1823–1901</p>
+        <p class="card-excerpt">簽下晚清幾乎所有不平等條約，自嘲「裱糊匠」。馬關中彈血流滿面繼續談判——守護進程不因物理損傷中斷。所有條約簽完後兩個月，自動退出。</p>
+      </div>
+      <div class="card-footer"><span class="timeline">1823–1901</span><span class="arrow">▶ 檢視檔案</span></div>
+    </a>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-note">◈ 以上檔案純屬腦洞，歷史事實部分均有據可查 ◈</p>
+    <p style="margin-top:8px;">腦洞歷史計劃 · 異常觀測檔案系列 · 近現代中國 / 古代中國 / 全球史</p>
+  </footer>
+
+  <script>
+    (function() {
+      const quadrantBtns = document.querySelectorAll('.quadrant-btn');
+      const typeTags = document.querySelectorAll('.filter-tag');
+      const cards = document.querySelectorAll('.episode-card');
+      let activeQuadrant = 'all', activeType = 'all';
+
+      function applyFilters() {
+        cards.forEach(card => {
+          const matchQuadrant = activeQuadrant === 'all' || card.dataset.quadrant === activeQuadrant;
+          const matchType = activeType === 'all' || card.dataset.type === activeType;
+          card.style.display = (matchQuadrant && matchType) ? '' : 'none';
+        });
+      }
+
+      quadrantBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          quadrantBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeQuadrant = btn.dataset.quadrant;
+          applyFilters();
+        });
+      });
+
+      typeTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          typeTags.forEach(t => t.classList.remove('active'));
+          tag.classList.add('active');
+          activeType = tag.dataset.filter;
+          applyFilters();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

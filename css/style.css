@@ -1,0 +1,972 @@
+/* ============================================================
+   腦洞歷史 — 異常觀測檔案
+   Anomaly Observation Dossier
+   神秘科幻暗色系
+   ============================================================ */
+
+/* --- CSS Variables --- */
+:root {
+  --bg-deep: #08080f;
+  --bg-surface: #0f0f18;
+  --bg-card: #12121f;
+  --bg-card-hover: #18182a;
+  --border-subtle: #1e1e35;
+  --border-active: #00e5ff33;
+
+  --text-primary: #d0d0dd;
+  --text-secondary: #9595ae;
+  --text-muted: #60607a;
+  --text-accent: #00e5ff;
+  --text-gold: #d4a574;
+  --text-warn: #ff8866;
+
+  --cyan: #00e5ff;
+  --cyan-dim: #008899;
+  --gold: #e8b860;
+  --gold-dim: #a07828;
+  --red: #ff5577;
+  --red-dim: #882244;
+  --green: #44cc88;
+  --green-dim: #226644;
+  --world: #b388ff;
+  --world-dim: #7c4dff;
+
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+  --font-sans: -apple-system, 'Noto Sans TC', 'Noto Sans SC', 'PingFang TC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-card: 0 2px 20px rgba(0,0,0,0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(0,229,255,0.15);
+  --shadow-glow-gold: 0 0 15px rgba(212,165,116,0.12);
+  --shadow-glow-world: 0 0 15px rgba(179,136,255,0.12);
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  min-height: 100vh;
+  letter-spacing: 0.015em;
+}
+
+/* Background texture — subtle noise & grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0,229,255,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 60%, rgba(212,165,116,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(100,100,180,0.02) 0%, transparent 100%);
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; }
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+p { margin-bottom: 1em; font-size: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+strong { color: #eee; }
+
+/* --- Scanline overlay (subtle) --- */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ============================================================
+   INDEX PAGE
+   ============================================================ */
+
+/* --- Header --- */
+.site-header {
+  text-align: center;
+  padding: 64px 24px 44px;
+  position: relative;
+}
+
+.site-header .logo-line {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.35em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  border: 1px solid var(--border-active);
+  padding: 7px 22px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  background: rgba(0,229,255,0.04);
+}
+
+.site-header h1 {
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, #e8e8f0 0%, #8888a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.site-header .subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+}
+
+.site-header .subtitle span {
+  color: var(--cyan);
+}
+
+/* --- Stats bar --- */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin: 36px 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* --- Quadrant filter bar --- */
+.quadrant-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  padding: 0 24px 12px;
+}
+
+.quadrant-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 24px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.08em;
+}
+
+.quadrant-btn:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.quadrant-btn:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.quadrant-btn:only-child {
+  border-radius: 20px;
+}
+
+.quadrant-btn + .quadrant-btn {
+  border-left: none;
+}
+
+.quadrant-btn:hover,
+.quadrant-btn.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,229,255,0.06);
+  box-shadow: 0 0 12px rgba(0,229,255,0.1);
+  z-index: 1;
+}
+
+/* Quadrant button color variants */
+.quadrant-btn.modern.active,
+.quadrant-btn.modern:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 14px rgba(0,229,255,0.15);
+}
+
+.quadrant-btn.ancient.active,
+.quadrant-btn.ancient:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 14px rgba(212,165,116,0.15);
+}
+
+.quadrant-btn.world.active,
+.quadrant-btn.world:hover {
+  border-color: var(--world);
+  color: var(--world);
+  box-shadow: 0 0 14px rgba(212,132,90,0.15);
+}
+
+/* --- Filter bar (anomaly type) --- */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px 24px 44px;
+}
+
+.filter-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 7px 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.06em;
+}
+
+.filter-tag:hover,
+.filter-tag.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,229,255,0.06);
+  box-shadow: 0 0 12px rgba(0,229,255,0.1);
+}
+
+/* --- Section divider --- */
+.section-divider {
+  text-align: center;
+  padding: 0 32px 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-divider .divider-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-divider .divider-label::before,
+.section-divider .divider-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* --- Card Grid --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 28px;
+  padding: 0 32px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- Episode Card --- */
+.episode-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.episode-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card), var(--shadow-glow-cyan);
+  background: var(--bg-card-hover);
+}
+
+/* Card top accent line — quadrant-coloured */
+.episode-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.episode-card:hover::before {
+  opacity: 1;
+}
+
+.episode-card.quadrant-ancient::before {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.episode-card.quadrant-ancient:hover {
+  border-color: rgba(212,165,116,0.3);
+  box-shadow: var(--shadow-card), var(--shadow-glow-gold);
+}
+
+.episode-card.quadrant-world::before {
+  background: linear-gradient(90deg, var(--world), transparent);
+}
+
+.episode-card.quadrant-world:hover {
+  border-color: rgba(212,132,90,0.3);
+  box-shadow: var(--shadow-card), var(--shadow-glow-world);
+}
+
+/* Card header area */
+.card-header {
+  padding: 24px 24px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-number {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--cyan-dim);
+  letter-spacing: 0.22em;
+}
+
+/* Quadrant badge on card */
+.quadrant-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 2px 8px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.quadrant-badge.modern {
+  color: var(--cyan);
+  border: 1px solid rgba(0,229,255,0.3);
+  background: rgba(0,229,255,0.06);
+}
+
+.quadrant-badge.ancient {
+  color: var(--gold);
+  border: 1px solid rgba(212,165,116,0.3);
+  background: rgba(212,165,116,0.06);
+}
+
+.quadrant-badge.world {
+  color: var(--world);
+  border: 1px solid rgba(212,132,90,0.3);
+  background: rgba(212,132,90,0.06);
+}
+
+.card-anomaly-type {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-warn);
+  border: 1px solid rgba(255,136,102,0.3);
+  padding: 3px 12px;
+  border-radius: 10px;
+  letter-spacing: 0.06em;
+}
+
+/* Card body */
+.card-body {
+  padding: 14px 24px 24px;
+}
+
+.card-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 4px;
+  color: #eee;
+}
+
+.card-subject {
+  font-size: 0.9rem;
+  color: var(--text-gold);
+  margin-bottom: 12px;
+}
+
+.card-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card footer */
+.card-footer {
+  padding: 15px 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.card-footer .timeline {
+  font-family: var(--font-mono);
+}
+
+.card-footer .arrow {
+  color: var(--cyan-dim);
+  transition: all 0.3s;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.episode-card:hover .card-footer .arrow {
+  color: var(--cyan);
+  transform: translateX(4px);
+}
+
+/* --- Glitch effect on hover (subtle) --- */
+@keyframes glitch-shift {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+
+.episode-card:hover .card-body h3 {
+  animation: glitch-shift 0.3s ease 1;
+}
+
+/* --- Footer --- */
+.site-footer {
+  text-align: center;
+  padding: 44px 24px 64px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.site-footer .footer-note {
+  color: var(--cyan-dim);
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+}
+
+/* ============================================================
+   EPISODE PAGE
+   ============================================================ */
+
+.episode-page {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 44px 24px 80px;
+}
+
+/* --- Back link --- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 44px;
+  transition: color 0.25s;
+}
+
+.back-link:hover {
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+/* --- Dossier Header --- */
+.dossier-header {
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--cyan);
+  border-radius: var(--radius-md);
+  padding: 34px;
+  margin-bottom: 44px;
+  background: var(--bg-surface);
+}
+
+.dossier-header .dossier-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+.dossier-header .dossier-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 36px;
+}
+
+.dossier-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dossier-field .field-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dossier-field .field-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.dossier-field .field-value.anomaly-type {
+  color: var(--text-warn);
+  font-family: var(--font-mono);
+}
+
+.dossier-field .field-value.anomaly-level {
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+}
+
+.dossier-field .field-value.quadrant-modern {
+  color: var(--cyan);
+}
+
+.dossier-field .field-value.quadrant-ancient {
+  color: var(--gold);
+}
+
+.dossier-field .field-value.quadrant-world {
+  color: var(--world);
+}
+
+/* --- Tags row --- */
+.dossier-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.dossier-tags .tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 4px 14px;
+  border-radius: 12px;
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.2);
+  color: var(--cyan-dim);
+}
+
+/* --- Part Section --- */
+.episode-part {
+  margin-bottom: 52px;
+}
+
+.part-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.part-title {
+  font-size: 1.6rem;
+  color: #eee;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Part 0 special styling */
+.part-0 {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  position: relative;
+}
+
+.part-0::before {
+  content: '◈ SIGNAL DETECTED';
+  position: absolute;
+  top: -11px;
+  left: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--text-warn);
+  background: var(--bg-deep);
+  padding: 3px 14px;
+}
+
+.part-0 p {
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+/* --- Sub sections --- */
+.sub-section {
+  margin-bottom: 32px;
+}
+
+.sub-section h4 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--text-gold);
+  margin-bottom: 12px;
+  padding-left: 14px;
+  border-left: 2px solid var(--gold-dim);
+}
+
+/* --- Evidence list --- */
+.evidence-list {
+  list-style: none;
+  padding: 0;
+}
+
+.evidence-list li {
+  position: relative;
+  padding: 12px 0 12px 30px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 1rem;
+  color: #b0b0c0;
+  line-height: 1.8;
+}
+
+.evidence-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--cyan-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.evidence-list li:last-child {
+  border-bottom: none;
+}
+
+.evidence-list li strong {
+  color: #ddd;
+}
+
+/* --- Narrative block --- */
+.narrative-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  margin: 24px 0;
+  position: relative;
+}
+
+.narrative-block::before {
+  content: '◆ NARRATIVE RE-ENACTMENT';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--cyan-dim);
+  margin-bottom: 18px;
+}
+
+.narrative-block p {
+  color: var(--text-primary);
+  font-style: normal;
+  text-indent: 2em;
+  font-size: 1rem;
+}
+
+/* --- Credibility meter --- */
+.credibility-meter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.credibility-meter .label {
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.credibility-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.credibility-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.credibility-fill.low { width: 18%; background: var(--red-dim); }
+.credibility-fill.medium { width: 42%; background: var(--gold-dim); }
+.credibility-fill.high { width: 72%; background: var(--green-dim); }
+
+.credibility-meter .score {
+  color: var(--cyan);
+  font-weight: 700;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* --- Quote block --- */
+.quote-block {
+  border-left: 3px solid var(--gold-dim);
+  padding: 14px 22px;
+  margin: 24px 0;
+  background: rgba(212,165,116,0.03);
+  font-style: italic;
+  color: var(--text-gold);
+  font-size: 1rem;
+}
+
+.quote-block .attribution {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+/* --- Historical source note --- */
+.source-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 12px 18px;
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-sm);
+  margin-top: 18px;
+  line-height: 1.7;
+}
+
+.source-note::before {
+  content: '📚 參考來源：';
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* --- Part 3 finale --- */
+.part-finale {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  text-align: center;
+}
+
+.part-finale .finale-line {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.part-finale .finale-blank {
+  display: inline-block;
+  border-bottom: 2px solid var(--cyan);
+  min-width: 8em;
+  color: var(--cyan);
+  font-style: italic;
+}
+
+/* --- Episode nav (prev/next) --- */
+.episode-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.episode-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color 0.25s;
+}
+
+.episode-nav a:hover {
+  color: var(--cyan);
+}
+
+/* --- Data-table style --- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 18px 0;
+}
+
+.data-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--cyan-dim);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-weight: 400;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.data-table tr:hover td {
+  background: rgba(0,229,255,0.02);
+}
+
+/* --- Sub-section body text --- */
+.sub-section p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    padding: 0 16px 60px;
+  }
+
+  .site-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .dossier-header .dossier-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .episode-page {
+    padding: 28px 16px 64px;
+  }
+
+  .stats-bar {
+    gap: 24px;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .episode-nav {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .quadrant-btn {
+    font-size: 0.72rem;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .filter-tag {
+    font-size: 0.7rem;
+    padding: 5px 12px;
+  }
+}
