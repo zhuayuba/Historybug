@@ -1,0 +1,23 @@
+{
+  "upcoming": [
+    "001-xian-shi-bian",
+    "002-si-du-chishui",
+    "003-qin-shi-huang",
+    "004-sun-zhongshan",
+    "005-hong-xiuquan",
+    "006-da-vinci",
+    "007-feng-yuxiang",
+    "008-deng-xiaoping",
+    "009-zhu-ge-liang",
+    "010-zhou-enlai",
+    "011-cixi",
+    "012-napoleon",
+    "013-lu-xun",
+    "014-lin-biao",
+    "015-wu-zetian",
+    "016-li-hongzhang"
+  ],
+  "featured": [],
+  "last_generated": null,
+  "quadrant_counter": {"modern": 11, "ancient": 3, "world": 2}
+}

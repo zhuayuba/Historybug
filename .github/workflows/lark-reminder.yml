@@ -6,21 +6,20 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Send Lark notification
-        run: |
-          curl -s -X POST '${{ secrets.LARK_WEBHOOK_URL }}' \
-            -H 'Content-Type: application/json' \
-            -d '{
-              "msg_type": "interactive",
-              "card": {
-                "header": {
-                  "title": {"tag": "plain_text", "content": "腦洞歷史 · 每週更新提醒"},
-                  "template": "wathet"
-                },
-                "elements": [
-                  {"tag": "markdown", "content": "📍 **腦洞歷史**\n\n當歷史人物可能是穿越者、無限流玩家、覺醒NPC……\n\n🔗 https://zhuayuba.github.io/Historybug/\n\n—\n共 16 期異常觀測檔案，涵蓋近現代中國、古代中國、全球史三個時空象限。"},
-                  {"tag": "action", "actions": [{"tag": "button", "text": {"tag": "plain_text", "content": "打開網站"}, "url": "https://zhuayuba.github.io/Historybug/", "type": "primary"}]}
-                ]
-              }
-            }'
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run orchestrator
+        env:
+          LARK_WEBHOOK_URL: ${{ secrets.LARK_WEBHOOK_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          SITE_URL: https://zhuayuba.github.io/Historybug/
+        run: python .github/scripts/send_lark.py
