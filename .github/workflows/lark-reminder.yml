@@ -1,0 +1,29 @@
+name: Lark Weekly Reminder
+
+on:
+  schedule:
+    # 每週二、四、六 上午 9:03 (UTC+8 = 凌晨 1:03 UTC)
+    - cron: '3 1 * * 2,4,6'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Lark notification
+        run: |
+          curl -s -X POST '${{ secrets.LARK_WEBHOOK_URL }}' \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "msg_type": "interactive",
+              "card": {
+                "header": {
+                  "title": {"tag": "plain_text", "content": "腦洞歷史 · 每週更新提醒"},
+                  "template": "wathet"
+                },
+                "elements": [
+                  {"tag": "markdown", "content": "📍 **腦洞歷史**\n\n當歷史人物可能是穿越者、無限流玩家、覺醒NPC……\n\n🔗 https://zhuayuba.github.io/naodong-lishi/\n\n—\n共 16 期異常觀測檔案，涵蓋近現代中國、古代中國、全球史三個時空象限。"},
+                  {"tag": "action", "actions": [{"tag": "button", "text": {"tag": "plain_text", "content": "打開網站"}, "url": "https://zhuayuba.github.io/naodong-lishi/", "type": "primary"}]}
+                ]
+              }
+            }'
