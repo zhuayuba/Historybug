@@ -49,7 +49,7 @@ def send_lark(slug, meta, total, remaining):
             },
             "elements": [
                 {"tag": "markdown", "content": f"**{meta['type']}** · {label}\n{meta['subject']}\n\n{meta.get('excerpt', '點擊下方按鈕查看完整檔案。')}"},
-                {"tag": "hr": {}},
+                {"tag": "hr"},
                 {"tag": "markdown", "content": f"📊 本期為第 **{total - remaining + 1}** 期推送 · 存貨剩餘 **{remaining}** 期"},
                 {"tag": "action", "actions": [
                     {"tag": "button", "text": {"tag": "plain_text", "content": "🔍 查看本期檔案"}, "url": f"{SITE_URL}episodes/{slug}.html", "type": "primary"},
@@ -64,9 +64,12 @@ def send_lark(slug, meta, total, remaining):
         data=json.dumps(card).encode("utf-8"),
         headers={"Content-Type": "application/json"}
     )
-    resp = urlopen(req, timeout=30)
-    result = json.loads(resp.read().decode("utf-8"))
-    print(f"Lark sent: {result.get('StatusMessage', result)}")
+    try:
+        resp = urlopen(req, timeout=30)
+        result = json.loads(resp.read().decode("utf-8"))
+        print(f"Lark sent: {result.get('StatusMessage', result)}")
+    except Exception as e:
+        print(f"Lark webhook failed (non-fatal): {e}")
 
 def update_index_html(slugs, meta_map):
     """Minimally update index.html — just ensure all slugs are present.
@@ -109,8 +112,13 @@ def git_commit_push():
     ]
     for cmd in cmds:
         result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.returncode != 0 and "nothing to commit" not in result.stderr:
-            print(f"Git error ({' '.join(cmd)}): {result.stderr}")
+        if result.returncode != 0:
+            stderr = result.stderr or ""
+            if "nothing to commit" in stderr:
+                print("Nothing to commit, skipping push.")
+                break
+            else:
+                print(f"Git error ({' '.join(cmd)}): {stderr}")
 
 def main():
     # Load backlog
@@ -162,7 +170,7 @@ def main():
         result = subprocess.run(
             [sys.executable, str(SCRIPTS_DIR / "generate_episodes.py")],
             capture_output=True, text=True, timeout=600,
-            env={**os.environ, "PATH": os.environ.get("PATH", "")}
+            env={**os.environ, "LLM_API_KEY": os.environ["LLM_API_KEY"]}
         )
         print(result.stdout)
         if result.returncode != 0:
