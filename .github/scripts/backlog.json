@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "001-xian-shi-bian",
     "002-si-du-chishui",
     "003-qin-shi-huang",
     "004-sun-zhongshan",
@@ -17,7 +16,13 @@
     "015-wu-zetian",
     "016-li-hongzhang"
   ],
-  "featured": [],
+  "featured": [
+    "001-xian-shi-bian"
+  ],
   "last_generated": null,
-  "quadrant_counter": {"modern": 11, "ancient": 3, "world": 2}
+  "quadrant_counter": {
+    "modern": 11,
+    "ancient": 3,
+    "world": 2
+  }
 }
