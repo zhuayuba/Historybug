@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "003-qin-shi-huang",
     "004-sun-zhongshan",
     "005-hong-xiuquan",
     "006-da-vinci",
@@ -17,7 +16,8 @@
   ],
   "featured": [
     "001-xian-shi-bian",
-    "002-si-du-chishui"
+    "002-si-du-chishui",
+    "003-qin-shi-huang"
   ],
   "last_generated": null,
   "quadrant_counter": {
