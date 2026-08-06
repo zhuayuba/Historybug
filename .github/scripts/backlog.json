@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "007-feng-yuxiang",
     "008-deng-xiaoping",
     "009-zhu-ge-liang",
     "010-zhou-enlai",
@@ -17,7 +16,8 @@
     "003-qin-shi-huang",
     "004-sun-zhongshan",
     "005-hong-xiuquan",
-    "006-da-vinci"
+    "006-da-vinci",
+    "007-feng-yuxiang"
   ],
   "last_generated": null,
   "quadrant_counter": {
