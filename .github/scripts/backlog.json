@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "011-cixi",
     "012-napoleon",
     "013-lu-xun",
     "014-lin-biao",
@@ -17,7 +16,8 @@
     "007-feng-yuxiang",
     "008-deng-xiaoping",
     "009-zhu-ge-liang",
-    "010-zhou-enlai"
+    "010-zhou-enlai",
+    "011-cixi"
   ],
   "last_generated": null,
   "quadrant_counter": {
