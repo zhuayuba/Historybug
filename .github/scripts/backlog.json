@@ -2,7 +2,13 @@
   "upcoming": [
     "014-lin-biao",
     "015-wu-zetian",
-    "016-li-hongzhang"
+    "016-li-hongzhang",
+    "017-auto",
+    "018-auto",
+    "019-auto",
+    "020-auto",
+    "021-auto",
+    "022-auto"
   ],
   "featured": [
     "001-xian-shi-bian",
@@ -19,10 +25,10 @@
     "012-napoleon",
     "013-lu-xun"
   ],
-  "last_generated": null,
+  "last_generated": "2026-08-22T01:09:27.248868",
   "quadrant_counter": {
-    "modern": 11,
-    "ancient": 3,
-    "world": 2
+    "modern": 15,
+    "ancient": 4,
+    "world": 3
   }
 }
