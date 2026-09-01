@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "017-auto",
     "018-auto",
     "019-auto",
     "020-auto",
@@ -23,7 +22,8 @@
     "013-lu-xun",
     "014-lin-biao",
     "015-wu-zetian",
-    "016-li-hongzhang"
+    "016-li-hongzhang",
+    "017-auto"
   ],
   "last_generated": "2026-08-22T01:09:27.248868",
   "quadrant_counter": {
