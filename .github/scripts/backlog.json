@@ -2,7 +2,13 @@
   "upcoming": [
     "044-auto",
     "045-auto",
-    "046-auto"
+    "046-auto",
+    "047-auto",
+    "048-auto",
+    "049-auto",
+    "050-auto",
+    "051-auto",
+    "052-auto"
   ],
   "featured": [
     "001-xian-shi-bian",
@@ -49,10 +55,10 @@
     "042-auto",
     "043-auto"
   ],
-  "last_generated": "2026-10-29T01:02:46.731016",
+  "last_generated": "2026-11-14T01:02:39.051118",
   "quadrant_counter": {
-    "modern": 31,
-    "ancient": 8,
-    "world": 7
+    "modern": 35,
+    "ancient": 9,
+    "world": 8
   }
 }
