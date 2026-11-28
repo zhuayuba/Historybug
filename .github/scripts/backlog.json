@@ -1,6 +1,5 @@
 {
   "upcoming": [
-    "049-auto",
     "050-auto",
     "051-auto",
     "052-auto"
@@ -53,7 +52,8 @@
     "045-auto",
     "046-auto",
     "047-auto",
-    "048-auto"
+    "048-auto",
+    "049-auto"
   ],
   "last_generated": "2026-11-14T01:02:39.051118",
   "quadrant_counter": {
